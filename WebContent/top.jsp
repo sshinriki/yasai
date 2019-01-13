@@ -9,12 +9,11 @@
 <title>Welcom shopping!</title>
 </head>
 <body>
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
 
-
+<h3>ようこそ！SBYKショッピングサイトへ</h3>
+旬のおいしい野菜を購入しよう！<br><br>
 
 <jsp:include page="/menu.jsp"/>
-
-<h3>ようこそ！ショッピングサイトへ</h3>
-旬のおいしい野菜を購入しよう！
 </body>
 </html>
