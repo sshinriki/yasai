@@ -38,7 +38,7 @@ if (action.equals("login")){//ログイン時
    //ここで本当は、menuページに遷移する。
     out.println("<html><head><title>ShowCart</title></head><body>");
     out.println("<h1>ログイン成功！</h1><br>");
-    out.println("<a href='menu.jsp’>メニューへ</a><br>");
+    out.println("<a href='/top.jsp’>メニューへ</a><br>");
     out.println("</body></html>");
   }else{
 	  out.println("<html><head><title>ShowCart</title></head><body>");
