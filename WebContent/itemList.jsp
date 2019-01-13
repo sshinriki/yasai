@@ -14,7 +14,7 @@
 <h3>商品一覧</h3>
 
 <c:forEach items="${items}" var="item">
-	<form action="/kaihatu/ShowItemServlet?action=list&code=${item.code}" method="post">
+	<form action="/yasai/ShowItemServlet?action=list&code=${item.code}" method="post">
 
 		<input type="hidden" name="item_code" value="${item.code}">
 		<table border=1>
