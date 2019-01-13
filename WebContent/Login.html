@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<form action = "/yasai/LoginServlet" method = "post">
+  ユーザ名：<input type="text" name = "name"><br>
+  パスワード：<input type = "password" name = "pw"><br>
+  <input type="hidden" name="action" value="login">
+  <input type = "submit" value="ログイン">
+  </form>
+    <a href ="/yasai/LoginServlet?action=logout">ログアウト</a>
+    
+</body>
