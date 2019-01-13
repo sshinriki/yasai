@@ -49,6 +49,42 @@ public class ItemDAO {
 			}
 		}
 
+		//全商品取得
+	}
+	public List<ItemBean>findAll() throws DAOException{
+		if(con==null) {
+			getConnection();
+		}
+		PreparedStatement st=null;
+		ResultSet rs=null;
+		try{
+			String sql="SELECT * FROM item";
+			st=con.prepareStatement(sql);
+			rs=st.executeQuery();
+			List<ItemBean>list=new ArrayList<ItemBean>();
+			while(rs.next()){
+				int code=rs.getInt("code");
+				String name=rs.getString("name");
+				int price=rs.getInt("price");
+				String img=rs.getString("img");
+				int stock=rs.getInt("stock");
+				String detail=rs.getString("detail");
+				ItemBean bean=new ItemBean(code,name,price,img,stock,detail);
+				list.add(bean);
+			}
+			return list;
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new DAOException("レコードの取得に失敗しました");
+		}finally{
+			try{
+				if(rs!=null)rs.close();
+				if(st!=null)st.close();
+				close();
+			}catch(Exception e){
+				throw new DAOException("リソースの開放に失敗しました");
+			}
+		}
 
 	}
 
