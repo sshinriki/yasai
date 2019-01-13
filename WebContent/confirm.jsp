@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Welcome shopping!</title>
+<title>注文確認</title>
 </head>
 <body>
 
@@ -33,7 +33,7 @@
 
 <h3>お客様情報</h3>
 
-<form action="/shopping/OrderServlet?action=order" method="post">
+<form action="/yasai/OrderServlet?action=order" method="post">
   <table border="1">
     <tr>
     <td>お名前</td><td>${customer.name}</td>
