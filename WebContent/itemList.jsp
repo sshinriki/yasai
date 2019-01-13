@@ -9,7 +9,7 @@
 <title>商品一覧</title>
 </head>
 <body>
-
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
 <jsp:include page="/menu.jsp"/>
 <h3>商品一覧</h3>
 
