@@ -7,7 +7,7 @@
 <title>商品詳細</title>
 </head>
 <body>
-<h3>SBYK</h3>
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
 
 
 	<form action="/yasai/CartServlet?action=add" method="post">
