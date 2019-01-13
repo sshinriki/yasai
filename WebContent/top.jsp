@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset=UTF-8>
-<title>Welcom shopping!</title>
+<title>トップページ</title>
 </head>
 <body>
 <h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>

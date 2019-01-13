@@ -10,5 +10,6 @@
 <body>
 <jsp:include page="/menu.jsp"/><br>
 <h3>ご注文ありがとうございました。</h3>
+<h3>またのご利用をお待ちしております。</h3>
 </body>
 </html>
