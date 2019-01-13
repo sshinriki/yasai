@@ -33,13 +33,17 @@ if (action.equals("login")){//ログイン時
     HttpSession session = request.getSession();
     //ログイン済みの属性を設定する。
     session.setAttribute("isLogin","true");
+    
+    
+   //ここで本当は、menuページに遷移する。
     out.println("<html><head><title>ShowCart</title></head><body>");
-    out.println("<h1>ユーザ名またはパスワードが違います</h1>");
+    out.println("<h1>ログイン成功！</h1><br>");
+    out.println("<a href='menu.jsp’>メニューへ</a><br>");
     out.println("</body></html>");
   }else{
-    out.println("<thml><head><title>ShowCart</title><head><body>");
-    out.println("<h1>ログアウトしました</h1>");
-    out.println("</body></html>");
+	  out.println("<html><head><title>ShowCart</title></head><body>");
+	  out.println("<h1>ユーザ名またはパスワードが違います</h1>");
+	  out.println("</body></html>");
   }
 
 }else if(action.equals("logout")){//ログアウト時
