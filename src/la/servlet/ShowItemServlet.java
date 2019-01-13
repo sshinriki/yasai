@@ -32,9 +32,9 @@ public class ShowItemServlet extends HttpServlet {
 			}else if(action.equals("list")){
 				int itemCode=Integer.parseInt(request.getParameter("code"));
 				ItemDAO dao=new ItemDAO();
-				List<ItemBean>list=(List<ItemBean>) dao.findByPrimaryKey(itemCode);
+				ItemBean product_detail = dao.findByPrimaryKey(itemCode);
 				//リストをリクエストスコープにいれてJSPへフォワードする
-				request.setAttribute("items",list);
+				request.setAttribute("item", product_detail);
 				gotoPage(request,response,"/showItem.jsp");
 			}else{
 				request.setAttribute("message", "正しく操作してください");
