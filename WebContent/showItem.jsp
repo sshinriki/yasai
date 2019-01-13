@@ -15,10 +15,10 @@
 		<input type="hidden" name="item_code" value="${item.code}">
 		<table border=1>
 			<tr>
-				<td width="150"><img src="img/${item.img}" width="60"><br>	</td>
-				<td width="200" >商品番号：<b>${item.code}</b><br>
-				商品名：<b>${item.name}</b><br>
-				商品説明：<b>${item.detail}</b><br>
+				<td width="300"><img src="img/${item.img}" width="200"><br>	</td>
+				<td width="300" >商品番号：${item.code}<br><br>
+				商品名：${item.name}<br><br>
+				商品説明：${item.detail}<br><br>
 				価格（税込）：${item.price}<br><br>
 				個数：
 				<select name="quantity">
@@ -27,7 +27,7 @@
 				<option value="3">3
 				<option value="4">4
 				<option value="5">5
-				</select>
+				</select><br>
 				<input type="submit" value="カート追加">
 				</td>
 	
