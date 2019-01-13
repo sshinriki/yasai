@@ -42,7 +42,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 		    //パラメータの解析
 		    String action = request.getParameter("action");
 		    //input_customerまたはパラメータなしの場合は顧客情報入力ページを表示
-		    if(action.equals("confirn")){
+		    if(action.equals("confirm")){
 		      CustomerBean bean = new CustomerBean();
 		      bean.setName(request.getParameter("name"));
 		      bean.setAddress(request.getParameter("address"));
