@@ -1,6 +1,7 @@
 package la.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,12 +24,25 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 
   //注文処理の業務はすべてセッションとCartが存在することが前提
   HttpSession session = request.getSession(false);
-
+  response.setContentType("text/html;charset=UTF-8");
+  PrintWriter out = response.getWriter();
+  
 	if(session == null){//セッションオブジェクトなし
 	request.setAttribute("message","セッションがきれています。もう一度トップページより操作してください。");
 	gotoPage(request,response,"/errInternal.jsp");
 	return;
+	}else{
+		
+		String isLogin = (String)session.getAttribute("isLogin");//ログイン済みかどうかチェックする。
+		if (isLogin ==null || !isLogin.equals("true")) {
+			out.println("<html><head><title>ShowCart</title></head><body>");
+			out.println("<h1>ログインしてください</h1>");
+			out.println("</body></html>");
+			return;
+		}
 	}
+	
+	
 
 	CartBean cart = (CartBean)session.getAttribute("cart");
 
