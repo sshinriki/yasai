@@ -38,10 +38,18 @@ public class ShowItemListServlet extends HttpServlet {
 			}else if(action.equals("list")){
 				int categoryCode=Integer.parseInt(request.getParameter("code"));
 				ItemDAO dao =new ItemDAO();
-				List<ItemBean>list=dao.findByCategory(categoryCode);
-				//Listをリクエストスコープに入れてjspへフォワードする
-				request.setAttribute("items",list);
-				gotoPage(request,response,"/itemList.jsp");
+				if(categoryCode==0){
+					List<ItemBean>list=dao.findAll();
+					//Listをリクエストスコープに入れてjspへフォワードする
+					request.setAttribute("items",list);
+					gotoPage(request,response,"/itemList.jsp");
+				}else if(categoryCode>=1&&categoryCode<=4){
+				
+					List<ItemBean>list=dao.findByCategory(categoryCode);
+					//Listをリクエストスコープに入れてjspへフォワードする
+					request.setAttribute("items",list);
+					gotoPage(request,response,"/itemList.jsp");
+				}
 			}else{
 				request.setAttribute("message","正しく操作してください");
 				gotoPage(request,response,"/errInternal.jsp");
