@@ -8,4 +8,5 @@
 	<a href="/kaihatu/ShowItemListServlet?action=list&code=${category.code}">${category.name}</a>
 </c:forEach>
 
+
 <a href="/kaihatu/ShowItemListServlet?action=show">カートを見る</a>
