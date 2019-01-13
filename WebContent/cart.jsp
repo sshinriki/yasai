@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Welcome shopping!</title>
+<title>カート</title>
 </head>
 <body>
 
@@ -30,7 +30,7 @@
   <td align="right">${item.value.quantity}</td>
   <td align="right">${item.value.price * item.value.quantity}円</td>
 <td>
-<form action="/shopping/CartServlet?action=delete" method="post">
+<form action="/yasai/CartServlet?action=delete" method="post">
   <input type="hidden" name="item_code" value="${item.value.code}">
   <input type="submit" value="削除">
 </form>
@@ -40,7 +40,7 @@
 <tr><td align="right" colspan="6">総計:${cart.total}円</td></tr>
 </table>
 
-<form action="/shopping/OrderServlet?action=input_customer" method="post">
+<form action="/yasai/OrderServlet?action=input_customer" method="post">
   <input type="submit" value="注文する">
 </form>
 </c:if>
