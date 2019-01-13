@@ -112,7 +112,7 @@ public class OrderDAO{
       //JDBCドライバの登録
       Class.forName("org.postgresql.Driver");
       //URL、ユーザ名、パスワードの設定
-      String url = "jdbc:postgresql:sample";
+      String url = "jdbc:postgresql:yasai";
       String user = "student";
       String pass = "himitu";
       //データベースへの接続
