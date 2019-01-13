@@ -5,13 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome shopping!</title>
+<title>注文完了!</title>
 </head>
 <body>
 <jsp:include page="/menu.jsp"/><br>
 <h3>ご注文ありがとうございました。</h3>
-お客様の注文番号は
-<h3><font color="red">${orderNumber}</font></h3>
-になります。
 </body>
 </html>
