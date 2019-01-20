@@ -56,7 +56,7 @@ public class ShowItemListServlet extends HttpServlet {
 				ItemDAO dao =new ItemDAO();
 				List<ItemBean>list=dao.findSearch(itemSearch);
 				request.setAttribute("items",list);
-				gotoPage(request,response,"/errInternal.jsp");
+				gotoPage(request,response,"/itemList.jsp");
 				
 			}else{
 				request.setAttribute("message","正しく操作してください");
