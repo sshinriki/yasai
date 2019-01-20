@@ -21,6 +21,62 @@ public class OrderDAO{
   }
 
   
+  public int setUser(String name, String address,String tel,String id,String pw) throws DAOException
+  {
+	    if(con == null)
+		      getConnection();
+
+		    PreparedStatement st = null;
+		    ResultSet rs = null;
+
+		    try{
+		    	
+		        //顧客番号の取得 Serial型の暗黙シーケンスから取得
+		        int userNumber = 0;//調整必要か
+		        String sql = "SELECT nextval('customer_code_seq')";
+		        st = con.prepareStatement(sql);
+		        rs = st.executeQuery();
+		        if(rs.next()){
+		        	userNumber = rs.getInt(1);
+		        }
+
+		        
+		        rs.close();
+		        st.close();
+		        
+
+		        //注文情報のOrderedテーブルへの追加
+		       sql = "INSERT INTO customer VALUES(?, ?, ?, ?, ?, ?)";
+		        st = con.prepareStatement(sql);
+		        //プレースホルダーの設定
+		        st.setInt(1, userNumber);
+		        st.setString(2, name);
+		        st.setString(3, address);
+		        st.setString(4, tel);
+		        st.setString(5, id);
+		        st.setString(6, pw);
+		        //SQLの実行
+		        st.executeUpdate();
+		        st.close();
+				  return userNumber;
+				  
+		    }catch(Exception e){
+			      e.printStackTrace();
+			      throw new DAOException("レコードの操作に失敗しました。");
+			    }finally{
+			      try{
+			        //リソースの開放
+			        if(rs != null)
+			          rs.close();
+			        if(st != null)
+			          st.close();
+			        close();
+			      }catch(Exception e){
+			        throw new DAOException("リソースの開放に失敗しました。");
+			      }
+			    }
+			  }
+  
   public CustomerBean saveUser(String id) throws DAOException{
 	    if(con == null)
 	      getConnection();
