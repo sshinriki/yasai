@@ -32,7 +32,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 	String isLogin=(String)session.getAttribute("isLogin");
 	
 	if(isLogin==null||!isLogin.equals("true")) {
-		request.setAttribute("message","ログインしてください1");
+		request.setAttribute("message","ログインしてください");
 		gotoPage(request,response,"/errInternal.jsp");
 		return;
 	}else{
@@ -69,7 +69,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 		      session.removeAttribute("customer");
 		      //注文番号をクライアントへ送る。
 		      request.setAttribute("orderNumber",new Integer(orderNumber));
-		      gotoPage(request,response,"/order.jsp");
+		      gotoPage(request,response,"/Order.jsp");
 
 		    }else{ //actionの値が不正
 		      request.setAttribute("message","正しく操作してください。");
