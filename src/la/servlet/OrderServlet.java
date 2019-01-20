@@ -1,7 +1,6 @@
 package la.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,62 +23,52 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 
   //注文処理の業務はすべてセッションとCartが存在することが前提
   HttpSession session = request.getSession(false);
-  response.setContentType("text/html;charset=UTF-8");
-  PrintWriter out = response.getWriter();
-  
+
 	if(session == null){//セッションオブジェクトなし
 	request.setAttribute("message","セッションがきれています。もう一度トップページより操作してください。");
 	gotoPage(request,response,"/errInternal.jsp");
 	return;
+	}
+	String isLogin=(String)session.getAttribute("isLogin");
+	
+	if(isLogin==null||!isLogin.equals("true")) {
+		gotoPage(request,response,"/Login.html");
+		return;
 	}else{
-		
-		String isLogin = (String)session.getAttribute("isLogin");//ログイン済みかどうかチェックする。
-		if (isLogin ==null || !isLogin.equals("true")) {
-			out.println("<html><head><title>ShowCart</title></head><body>");
-			out.println("<h1>ログインしてください</h1>");
-			out.println("</body></html>");
+		CartBean cart = (CartBean)session.getAttribute("cart");
+		CustomerBean user=(CustomerBean) session.getAttribute("userinfo");
+		if(cart == null||user==null){//カートがない
+			request.setAttribute("message","正しく操作してください。");
+			gotoPage(request,response,"/errInternal.jsp");
 			return;
 		}
 	}
 	
-	
 
-	CartBean cart = (CartBean)session.getAttribute("cart");
-
-	if(cart == null){//カートがない
-	request.setAttribute("message","正しく操作してください。");
-	gotoPage(request,response,"/errInternal.jsp");
-	return;
-	}
-	
 	  try{
 		    //パラメータの解析
 		    String action = request.getParameter("action");
 		    //input_customerまたはパラメータなしの場合は顧客情報入力ページを表示
 		    if(action.equals("confirm")){
-		      CustomerBean bean = new CustomerBean();
-		      bean.setName(request.getParameter("name"));
-		      bean.setAddress(request.getParameter("address"));
-		      bean.setTel(request.getParameter("tel"));
-		      bean.setEmail(request.getParameter("email"));
-		      session.setAttribute("customer",bean);
 		      gotoPage(request,response,"/confirm.jsp");
 		      //orderは注文確定
 		    }else if(action.equals("order")){
-		      CustomerBean customer = (CustomerBean)session.getAttribute("customer");
-		      if(customer == null) {//顧客情報がない
-		        request.setAttribute("message","正しく操作してください。");
-		        gotoPage(request,response,"/errInternal");
-		      }
+		    	CartBean cart = (CartBean)session.getAttribute("cart");
+		    	CustomerBean customer = (CustomerBean)session.getAttribute("userinfo");
+		    	if(customer == null) {//顧客情報がない
+		    		request.setAttribute("message","正しく操作してください。");
+		    		gotoPage(request,response,"/errInternal.jsp");
+		    	}
 
 		      OrderDAO order = new OrderDAO();
-		      int orderNumber = order.saveOrder(customer,cart);
+		      int orderNumber = order.saveOrder(customer.getCode(),cart);
+		      
 		      //注文後はセッション上方をクリアする
 		      session.removeAttribute("cart");
 		      session.removeAttribute("customer");
 		      //注文番号をクライアントへ送る。
 		      request.setAttribute("orderNumber",new Integer(orderNumber));
-		      gotoPage(request,response,"/order.jsp");
+		      gotoPage(request,response,"/Order.jsp");
 
 		    }else{ //actionの値が不正
 		      request.setAttribute("message","正しく操作してください。");
@@ -91,15 +80,15 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 		    request.setAttribute("message","内部エラーが発生しました。");
 		    gotoPage(request,response,"/errInternal.jsp");
 		  }
-	
+
 }
 
 private void gotoPage(HttpServletRequest request,HttpServletResponse response,String page)
 		throws ServletException,IOException{
-	
+
 	RequestDispatcher rd = request.getRequestDispatcher(page);
 	rd.forward(request,response);
-	
+
 }
 
 protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException,IOException{
@@ -107,3 +96,4 @@ protected void doPost(HttpServletRequest request,HttpServletResponse response) t
 }
 
 }
+
