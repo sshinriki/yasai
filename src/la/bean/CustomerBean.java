@@ -8,13 +8,16 @@ public class CustomerBean implements Serializable{
   private String address;
   private String tel;
   private String email;
+  private String pass;
 
-  public CustomerBean(int code, String name, String address, String tel, String email){
+
+public CustomerBean(int code, String name, String address, String tel, String email,String pass){
     this.code = code;
     this.name = name;
     this.address = address;
     this.tel = tel;
     this.email = email;
+    this.pass=pass;
   }
 
   public CustomerBean(){
@@ -60,4 +63,11 @@ public class CustomerBean implements Serializable{
   public void setEmail(String email){
     this.email = email;
   }
+  public String getPass() {
+	return pass;
+}
+
+public void setPass(String pass) {
+	this.pass = pass;
+}
 }
