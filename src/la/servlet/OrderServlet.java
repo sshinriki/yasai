@@ -32,7 +32,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 	String isLogin=(String)session.getAttribute("isLogin");
 	
 	if(isLogin==null||!isLogin.equals("true")) {
-		request.setAttribute("message","ログインしてください1");
+		request.setAttribute("message","ログインしてください");
 		gotoPage(request,response,"/errInternal.jsp");
 		return;
 	}else{
