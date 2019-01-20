@@ -33,6 +33,7 @@ public class ShowItemListServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		
 		try{
+			request.setCharacterEncoding("UTF-8");
 			//パラメータ解析
 			String action=request.getParameter("action");
 			//topまたはパラメータなしの場合はtop
