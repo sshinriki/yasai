@@ -66,6 +66,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 		      //注文後はセッション上方をクリアする
 		      session.removeAttribute("cart");
 		      session.removeAttribute("customer");
+		      session.removeAttribute("isLogin");
 		      //注文番号をクライアントへ送る。
 		      request.setAttribute("orderNumber",new Integer(orderNumber));
 		      gotoPage(request,response,"/Order.jsp");
