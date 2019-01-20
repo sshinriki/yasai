@@ -115,7 +115,7 @@ public class OrderDAO{
 
       //注文明細情報のOrderedDetailテーブルへの追加
       //商品ごとに複数レコード追加
-      sql = "INSERT INTO ordered_detail VALUES(?, ?, ?)";
+      sql = "INSERT INTO ordered_detail(order_code,item_code,num) VALUES(?, ?, ?)";
       st = con.prepareStatement(sql);
       Map<Integer, ItemBean> items = cart.getItems();
       Collection<ItemBean> list = items.values();
