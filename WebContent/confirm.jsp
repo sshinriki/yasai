@@ -36,16 +36,16 @@
 <form action="/yasai/OrderServlet?action=order" method="post">
   <table border="1">
     <tr>
-    <td>お名前</td><td>${customer.name}</td>
+    <td>お名前</td><td>${userinfo.name}</td>
     </tr>
     <tr>
-    <td>住所</td><td>${customer.address}</td>
+    <td>住所</td><td>${userinfo.address}</td>
     </tr>
     <tr>
-    <td>電話番号</td><td>${customer.tel}</td>
+    <td>電話番号</td><td>${userinfo.tel}</td>
     </tr>
     <tr>
-    <td>e-mail</td><td>${customer.email}</td>
+    <td>e-mail</td><td>${userinfo.email}</td>
     </tr>
     </table><br>
     <input type="submit" value="この内容で注文">
