@@ -29,37 +29,41 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 	gotoPage(request,response,"/errInternal.jsp");
 	return;
 	}
-
-	CartBean cart = (CartBean)session.getAttribute("cart");
-
-	if(cart == null){//カートがない
-	request.setAttribute("message","正しく操作してください。");
-	gotoPage(request,response,"/errInternal.jsp");
-	return;
+	String isLogin=(String)session.getAttribute("isLogin");
+	
+	if(isLogin==null||!isLogin.equals("true")) {
+		request.setAttribute("message","ログインしてください1");
+		gotoPage(request,response,"/errInternal.jsp");
+		return;
+	}else{
+		CartBean cart = (CartBean)session.getAttribute("cart");
+		CustomerBean user=(CustomerBean) session.getAttribute("userinfo");
+		if(cart == null||user==null){//カートがない
+			request.setAttribute("message","正しく操作してください。");
+			gotoPage(request,response,"/errInternal.jsp");
+			return;
+		}
 	}
+	
 
 	  try{
 		    //パラメータの解析
 		    String action = request.getParameter("action");
 		    //input_customerまたはパラメータなしの場合は顧客情報入力ページを表示
 		    if(action.equals("confirm")){
-		      CustomerBean bean = new CustomerBean();
-		      bean.setName(request.getParameter("name"));
-		      bean.setAddress(request.getParameter("address"));
-		      bean.setTel(request.getParameter("tel"));
-		      bean.setEmail(request.getParameter("email"));
-		      session.setAttribute("customer",bean);
 		      gotoPage(request,response,"/confirm.jsp");
 		      //orderは注文確定
 		    }else if(action.equals("order")){
-		      CustomerBean customer = (CustomerBean)session.getAttribute("customer");
-		      if(customer == null) {//顧客情報がない
-		        request.setAttribute("message","正しく操作してください。");
-		        gotoPage(request,response,"/errInternal.jsp");
-		      }
+		    	CartBean cart = (CartBean)session.getAttribute("cart");
+		    	CustomerBean customer = (CustomerBean)session.getAttribute("userinfo");
+		    	if(customer == null) {//顧客情報がない
+		    		request.setAttribute("message","正しく操作してください。");
+		    		gotoPage(request,response,"/errInternal.jsp");
+		    	}
 
 		      OrderDAO order = new OrderDAO();
-		      int orderNumber = order.saveOrder(customer,cart);
+		      int orderNumber = order.saveOrder(customer.getCode(),cart);
+		      
 		      //注文後はセッション上方をクリアする
 		      session.removeAttribute("cart");
 		      session.removeAttribute("customer");

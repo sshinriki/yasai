@@ -39,6 +39,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 		    //セッション管理を行う
 		    HttpSession session = request.getSession();
 		    //ログイン済みの属性を設定する。
+		    session.setAttribute("isLogin","true");
 		    session.setAttribute("userinfo",user);
 		    request.setAttribute("message","ログイン成功");
 			gotoPage(request,response,"/errInternal.jsp");
