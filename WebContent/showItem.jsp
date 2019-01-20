@@ -15,7 +15,7 @@
 		<input type="hidden" name="item_code" value="${item.code}">
 		<table border=1>
 			<tr>
-				<td width="300"><img src="img/${item.img}" width="200"><br>	</td>
+				<td width="300"><div align="center"><img src="img/${item.img}" width="200"></div><br>	</td>
 				<td width="300" >商品番号：${item.code}<br><br>
 				商品名：${item.name}<br><br>
 				商品説明：${item.detail}<br><br>
