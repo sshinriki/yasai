@@ -16,7 +16,11 @@
 </div>
 <h3>ようこそ！SBYKショッピングサイトへ</h3>
 旬のおいしい野菜を購入しよう！<br><br>
+<hr>
+	<form action="/yasai/ShowItemServlet?action=search">
+	商品名検索：<input type="text" name="itemSearch">
+	<input type="submit" value="検索"><br>
+	</form><br>
+	
 <jsp:include page="/menu.jsp"/>
-
-</body>
-</html>
+	
