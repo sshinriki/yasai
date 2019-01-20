@@ -33,7 +33,10 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 		  
 		  OrderDAO dao= new OrderDAO();
 		  CustomerBean user=dao.saveUser(id);
-		
+		if (pw =="" || id =="") {
+			  request.setAttribute("message","IDとパスワードを入力してください。");
+				gotoPage(request,response,"/errInternal.jsp");
+		}else
 		  //ユーザ名とパスワードが一致したら
 		  if (pw.equals(user.getPass())){
 		    //セッション管理を行う
@@ -48,6 +51,7 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
 			  request.setAttribute("message","パスワードが違います");
 				gotoPage(request,response,"/errInternal.jsp");
 		  }
+		
 		
 		}else if(action.equals("logout")){//ログアウト時
 		  //すでに作成されているセッション領域を取得する。新しくは作成しない
