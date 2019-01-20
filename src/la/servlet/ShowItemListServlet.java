@@ -30,6 +30,7 @@ public class ShowItemListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try{
+			request.setCharacterEncoding("UTF-8");
 			//パラメータ解析
 			String action=request.getParameter("action");
 			//topまたはパラメータなしの場合はtop
@@ -51,12 +52,11 @@ public class ShowItemListServlet extends HttpServlet {
 					gotoPage(request,response,"/itemList.jsp");
 				}
 			}else if(action.equals("search")){
-				request.setCharacterEncoding("UTF-8");
 				String itemSearch=request.getParameter("itemSearch");
 				ItemDAO dao =new ItemDAO();
 				List<ItemBean>list=dao.findSearch(itemSearch);
 				request.setAttribute("items",list);
-				gotoPage(request,response,"/itemList.jsp");
+				gotoPage(request,response,"/errInternal.jsp");
 				
 			}else{
 				request.setAttribute("message","正しく操作してください");
