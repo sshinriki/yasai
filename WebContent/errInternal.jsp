@@ -7,6 +7,6 @@
 <title>InputError</title>
 </head>
 <body>
-<h1>${message}</h1>
+<h1>${message}</h1><br><a href ="/yasai/index.jsp">トップページへ</a>
 </body>
 </html>
