@@ -20,6 +20,61 @@ public class OrderDAO{
     getConnection();
   }
 
+  
+  public String saveUser(String user_id, String pass) throws DAOException{
+	    if(con == null)
+	      getConnection();
+
+	    PreparedStatement st = null;
+	    ResultSet rs = null;
+
+	    try{
+	      //ユーザIDを取得する。
+	    	
+	      String sql = "SELECT * from customer where name = user_id";
+	      st = con.prepareStatement(sql);
+	      rs = st.executeQuery();
+	      
+	      String rs_name=rs.getString("name");
+	      //String rs_address=rs.getString("address");
+	      String rs_pw=rs.getString("pass");
+	      
+
+	      return rs_name,pass;
+	      //st.close();
+	      
+	      }
+	    
+	      
+	    catch(Exception e){
+	      e.printStackTrace();
+	      throw new DAOException("レコードの操作に失敗しました。");
+	    }finally{
+	      try{
+	        //リソースの開放
+	        if(rs != null)
+	          rs.close();
+	        if(st != null)
+	          st.close();
+	        close();
+	      }catch(Exception e){
+	        throw new DAOException("リソースの開放に失敗しました。");
+	      }
+	    }
+	  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   public int saveOrder(CustomerBean customer, CartBean cart) throws DAOException{
     if(con == null)
       getConnection();
