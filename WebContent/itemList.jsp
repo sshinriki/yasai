@@ -22,8 +22,8 @@
 				<td width="200" >商品番号：<b>${item.code}</b><br>
 				商品名：<b>${item.name}</b><br><br><br>
 				</td>
-				<td width="150"><img src="img/${item.img}" width="60"><br>
-				<input type="submit" value="商品詳細">
+				<td width="150"><div align="center"><img src="img/${item.img}" width="60"></div>
+				<div align="center"><input type="submit" value="商品詳細"></div>
 				</td>
 			</tr>
 		</table>
