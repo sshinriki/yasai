@@ -21,7 +21,7 @@ public class OrderDAO{
   }
 
   
-  public String saveUser(String user_id, String pass) throws DAOException{
+  public CustomerBean saveUser(String id) throws DAOException{
 	    if(con == null)
 	      getConnection();
 
@@ -31,22 +31,24 @@ public class OrderDAO{
 	    try{
 	      //ユーザIDを取得する。
 	    	
-	      String sql = "SELECT * from customer where name = user_id";
-	      st = con.prepareStatement(sql);
-	      rs = st.executeQuery();
+	      String sql = "SELECT * FROM customer WHERE email=?";
+			st=con.prepareStatement(sql);
+			st.setString(1, id);
+			rs=st.executeQuery();
 	      
-	      String rs_name=rs.getString("name");
-	      //String rs_address=rs.getString("address");
-	      String rs_pw=rs.getString("pass");
-	      
-
-	      return rs_name,pass;
-	      //st.close();
-	      
-	      }
-	    
-	      
-	    catch(Exception e){
+			if(rs.next()){
+				int code=rs.getInt("code");
+				String name=rs.getString("name");
+				String address=rs.getString("address");
+				String tel=rs.getString("tel");
+				String email=rs.getString("email");
+				String pass=rs.getString("pass");
+				CustomerBean bean=new CustomerBean(code,name,address,tel,email,pass);
+				return bean;
+			}else{
+				return null;
+			}
+	    }catch(Exception e){
 	      e.printStackTrace();
 	      throw new DAOException("レコードの操作に失敗しました。");
 	    }finally{
@@ -162,21 +164,18 @@ public class OrderDAO{
     }
   }
 
-  private void getConnection() throws DAOException{
-    try{
-      //JDBCドライバの登録
-      Class.forName("org.postgresql.Driver");
-      //URL、ユーザ名、パスワードの設定
-      String url = "jdbc:postgresql:yasai";
-      String user = "student";
-      String pass = "himitu";
-      //データベースへの接続
-      con = DriverManager.getConnection(url, user, pass);
-    }catch(Exception e){
-      e.printStackTrace();
-      throw new DAOException("接続に失敗しました。");
-    }
-  }
+private void getConnection() throws DAOException{
+		try{
+			Class.forName("org.postgresql.Driver");
+			String url="jdbc:postgresql:yasai";
+			String user="sbyk";
+			String pass="12345678";
+			con=DriverManager.getConnection(url,user,pass);
+		}catch(Exception e){
+			e.printStackTrace();
+			throw new DAOException("接続に失敗しました");
+		}
+}
 
   private void close() throws SQLException{
     if(con != null){
