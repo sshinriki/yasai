@@ -50,7 +50,8 @@ public class ShowItemListServlet extends HttpServlet {
 					request.setAttribute("items",list);
 					gotoPage(request,response,"/itemList.jsp");
 				}
-			}else if(action.equals("serch")){
+			}else if(action.equals("search")){
+				request.setCharacterEncoding("UTF-8");
 				String itemSearch=request.getParameter("itemSearch");
 				ItemDAO dao =new ItemDAO();
 				List<ItemBean>list=dao.findSearch(itemSearch);
