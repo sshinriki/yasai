@@ -172,7 +172,7 @@ public class ItemDAO {
 		  try{
 		    String sql="SELECT * FROM item WHERE name LIKE ? ORDER BY code";
 		    st=con.prepareStatement(sql);
-		    st.setString(1,"%"+search+"%");
+		    st.setString(1, "%"+ search +"%");
 		    rs=st.executeQuery();
 		    List<ItemBean>list=new ArrayList<ItemBean>();
 		    while(rs.next()){
