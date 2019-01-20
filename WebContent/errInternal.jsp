@@ -7,6 +7,6 @@
 <title>Page</title>
 </head>
 <body>
-<h1>${message}</h1><br><a href ="/yasai/index.jsp">トップページへ</a>
+<h1>${message}</h1><br><a href ="/yasai/Login.html">ログインページへ</a><br><a href ="/yasai/index.jsp">トップページへ</a>
 </body>
 </html>
