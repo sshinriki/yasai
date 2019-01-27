@@ -28,19 +28,36 @@ public class CartServlet extends HttpServlet {
 			//addはカートに追加処理
 			}else if (action.equals("add")) {
 				int code = Integer.parseInt(request.getParameter("item_code"));
-				int quantity = Integer.parseInt(request.getParameter("quantity"));
-				HttpSession session = request.getSession(true);
-				CartBean cart = (CartBean) session.getAttribute("cart");
-				if (cart == null) {//初めてのクライアントの場合はカートを作成する
-					cart = new CartBean();
-					session.setAttribute("cart", cart);
+				String quantity =request.getParameter("quantity");
+				int stock = Integer.parseInt(request.getParameter("item_stock"));
+				
+				
+				if(quantity==null||quantity.length() == 0){
+					request.setAttribute("message", "個数を入力してください。");
+					request.setAttribute("stckerr", code);
+					gotoPage(request, response, "/stockerr.jsp");
+					return;
 				}
-				//商品コードの商品を取得する
-				ItemDAO dao = new ItemDAO();
-				ItemBean bean = dao.findByPrimaryKey(code);
-				//カートに追加する
-				cart.addCart(bean, quantity);
-				gotoPage(request, response, "/cart.jsp");
+				int qquantity=Integer.parseInt(quantity);
+				if(qquantity>stock){//在庫が足りない		
+					request.setAttribute("message", "在庫が足りません。");
+					request.setAttribute("stckerr", code);
+					gotoPage(request, response, "/stockerr.jsp");
+					return;				
+				}else{		
+					HttpSession session = request.getSession(true);
+					CartBean cart = (CartBean) session.getAttribute("cart");
+					if (cart == null) {//初めてのクライアントの場合はカートを作成する
+						cart = new CartBean();
+						session.setAttribute("cart", cart);
+					}
+					//商品コードの商品を取得する
+					ItemDAO dao = new ItemDAO();
+					ItemBean bean = dao.findByPrimaryKey(code);
+					//カートに追加する
+					cart.addCart(bean, qquantity);
+					gotoPage(request, response, "/cart.jsp");
+				}
 			//deleteはカートから削除処理
 			}else if (action.equals("delete")) {
 				HttpSession session = request.getSession(false);
