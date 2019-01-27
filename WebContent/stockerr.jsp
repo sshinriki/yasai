@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>${message}</h1><br><a href ="/yasai/ShowItemServlet?action=list&code=${stckerr}">商品詳細へ</a><br>
-<a href ="/yasai/index.jsp">トップページへ</a>
+<a href ="/yasai/index.jsp">あトップページへ</a>
 
 </body>
 </html>
