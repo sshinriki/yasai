@@ -22,21 +22,35 @@
 <p style="text-align: center"><img src="//www.jp.seicho-no-ie.org/brha/wp/wp-content/uploads/2015/12/57d18a3ee80a60d1b8f9dcc284fe74ec_s.jpg" width="450" height="300"></p><br>
 <hr>
 
-<div style="text-align: center; display:inline-block; width:50%;">
+
+<table>
+<tr>
+<td  width="500" valign="top"  align="right">
+<table width="400"><tr><td>
+<div style="text-align: right; display:inline-block;"  width:100%; >
+
 <p>
 	<form action="/yasai/ShowItemListServlet?action=search" method="post">
 	商品名検索：<input type="text" name="itemSearch">
 	<input type="submit" value="検索"><br>
-	</form><br>
-<jsp:include page="/menu.jsp"/>
-</p>
+	</form>
+	</p>
 </div>
+	</td></tr>
+	<tr><td>
+<jsp:include page="/menu.jsp"/>
+</td></tr>
+</table>
+</td>
+<td  width="30"  align="right">
+<div style="background-color:gray; width:1px; height:300px;"></div>
+</td>
+<td  valign="top">
 
-
-<div style="display:inline-block; width:50%; float:right; text-align:center;">
+<div style="display:inline-block; width:100%; float:right; text-align:center;">
 <p><span style="border-bottom: solid 4px red;"><font size="4">&ensp;栄養価の高い野菜ランキング Top5！&ensp;</font></span></p>
 
-<table width="300" align="center"><tr><td style="border-style: none;text-align: center;">
+<table width="400" align="center"><tr><td style="border-style: none;text-align: center;">
 <font size="5">1位&emsp;&emsp;…</font>
 </td><td style="border-style: none;text-align: center;">
 <font size="6"><a href ="/yasai/ShowItemServlet?action=list&code=1">キャベツ</a></font>
@@ -50,18 +64,31 @@
 <font size="5">3位&emsp;&emsp;…</font>
 </td><td style="border-style: none;text-align: center;">
 <font size="6"><a href ="/yasai/ShowItemServlet?action=list&code=6">トマト</a></font>
-</td></tr><tr>
+</td>
+</tr>
+<tr>
 <td style="border-style: none;text-align: center;">
 <font size="5">4位&emsp;&emsp;…</font>
-</td><td style="border-style: none;text-align: center;">
+</td>
+<td style="border-style: none;text-align: center;">
 <font size="6"><a href ="/yasai/ShowItemServlet?action=list&code=18">ごぼう</a></font>
-</td></tr><tr>
+</td>
+</tr>
+<tr>
 <td style="border-style: none;text-align: center;">
 <font size="5">5位&emsp;&emsp;…</font>
 </td><td style="border-style: none;text-align: center;">
 <font size="6"><a href ="/yasai/ShowItemServlet?action=list&code=14">かぼちゃ</a></font>
-</td></tr>
-</table><br><br>
+</td>
+</tr>
+</table>
 </div>
+
+</td>
+</tr>
+</table>
+
+
+
 
 </body>	
