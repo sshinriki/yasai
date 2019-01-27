@@ -9,15 +9,18 @@
 <title>商品一覧</title>
 </head>
 <body>
-<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
-<jsp:include page="/menu.jsp"/>
+<div style="text-align: center">
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="300"></a></h3>
+
+<jsp:include page="/menu.jsp" /><br><br>
+<hr>
 <h3>商品一覧</h3>
 
 <c:forEach items="${items}" var="item">
 	<form action="/yasai/ShowItemServlet?action=list&code=${item.code}" method="post">
 
 		<input type="hidden" name="item_code" value="${item.code}">
-		<table border=1>
+		<table border=1 align="center">
 			<tr>
 				<td width="200" >商品番号：<b>${item.code}</b><br>
 				商品名：<b>${item.name}</b><br><br><br>
@@ -29,5 +32,6 @@
 		</table>
 	</form>
 </c:forEach>
+</div>
 </body>
 </html>
