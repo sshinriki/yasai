@@ -28,6 +28,7 @@
 				<option value="4">4
 				<option value="5">5
 				</select><br>
+				在庫：${item.stock}<br>
 				<input type="submit" value="カート追加">
 				</td>
 	
