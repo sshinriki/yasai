@@ -23,15 +23,7 @@
 				商品説明：${item.detail}<br><br>
 				価格（税込）：${item.price}<br><br>
 				個数：<input type="text" name="quantity">
-<%--			<select name="quantity">
-				<option value="1">1
-				<option value="2">2
-				<option value="3">3
-				<option value="4">4
-				<option value="5">5
-				</select>
- --%>				
-				在庫数：${item.stock}<br>
+				在庫：${item.stock}<br>
 				<input type="submit" value="カート追加">
 				</td>
 	

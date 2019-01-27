@@ -11,6 +11,7 @@
 <h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
 <jsp:include page="/menu.jsp"/><br>
 <h3>ご注文ありがとうございました。</h3>
-<h3>またのご利用をお待ちしております。</h3>
+<h3>またのご利用をお待ちしております。</h3><br>
+<a href ="/yasai/LoginServlet?action=logout">ログアウト</a>
 </body>
 </html>
