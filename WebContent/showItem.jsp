@@ -8,14 +8,19 @@
 <title>商品詳細</title>
 </head>
 <body>
-<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
+<div style="text-align: center">
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="300"></a></h3>
+
+<jsp:include page="/menu.jsp" /><br><br>
+<hr><br>
 
 
 	<form action="/yasai/CartServlet?action=add" method="post">
 
 		<input type="hidden" name="item_code" value="${item.code}">
-		<input type="hidden" name="item_stock" value="${item.stock}">		
-		<table border=1>
+
+		<table border=1 align="center">
+
 			<tr>
 				<td width="300"><div align="center"><img src="img/${item.img}" width="200"></div><br>	</td>
 				<td width="300" >商品番号：${item.code}<br><br>
@@ -29,7 +34,7 @@
 	
 			</tr>
 		</table>
-	</form>
-
+	</form><br>
+</div>
 </body>
 </html>

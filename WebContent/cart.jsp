@@ -9,8 +9,11 @@
 <title>カート</title>
 </head>
 <body>
-<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="250"></a></h3>
-<jsp:include page="/menu.jsp" /><br>
+<div style="text-align: center">
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="300"></a></h3>
+
+<jsp:include page="/menu.jsp" /><br><br>
+<hr>
 <h3>現在のカートの中身</h3>
 
 <c:if test="${empty cart.items}">
@@ -44,6 +47,6 @@
   <input type="submit" value="注文する">
 </form>
 </c:if>
-
+</div>
 </body>
 </html>

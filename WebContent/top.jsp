@@ -22,11 +22,13 @@
 <p style="text-align: center"><img src="//www.jp.seicho-no-ie.org/brha/wp/wp-content/uploads/2015/12/57d18a3ee80a60d1b8f9dcc284fe74ec_s.jpg" width="450" height="300"></p><br>
 <hr>
 
+
 <table>
 <tr>
 <td  width="500" valign="top"  align="right">
 <table width="400"><tr><td>
 <div style="text-align: right; display:inline-block;"  width:100%; >
+
 <p>
 	<form action="/yasai/ShowItemListServlet?action=search" method="post">
 	商品名検索：<input type="text" name="itemSearch">
