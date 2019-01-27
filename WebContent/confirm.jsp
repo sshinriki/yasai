@@ -20,7 +20,7 @@
 <h3>ご注文内容</h3>
 
 <c:if test="${not empty cart.items}">
-<table border="1">
+<table border="1" align="center">
 <tr><td>商品番号</td><td>商品名</td><td>単価(税込)</td>
     <td>個数</td><td>小計</td></tr>
 
@@ -40,7 +40,7 @@
 <h3>お客様情報</h3>
 
 <form action="/yasai/OrderServlet?action=order" method="post">
-  <table border="1">
+  <table border="1" align="center">
     <tr>
     <td>お名前</td><td>${userinfo.name}</td>
     </tr>
