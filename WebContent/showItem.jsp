@@ -18,6 +18,7 @@
 	<form action="/yasai/CartServlet?action=add" method="post">
 
 		<input type="hidden" name="item_code" value="${item.code}">
+		<input type="hidden" name="item_stock" value="${item.stock}">
 
 		<table border=1 align="center">
 
