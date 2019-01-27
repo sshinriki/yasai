@@ -25,44 +25,54 @@ protected void doGet(HttpServletRequest request,HttpServletResponse response) th
   response.setContentType("text/html;charset=UTF-8");
   //PrintWriter out = response.getWriter();
   try{
-  //actionリクエストパラメータの読み込み
-		String action = request.getParameter("action");
-		if (action.equals("login")){//ログイン時
-		  String id = request.getParameter("id");
-		  String pw= request.getParameter("pw");
-		  
-		  OrderDAO dao= new OrderDAO();
-		  CustomerBean user=dao.saveUser(id);
-		if (pw =="" || id =="") {
-			  request.setAttribute("message","IDとパスワードを入力してください。");
+	  //actionリクエストパラメータの読み込み
+			String action = request.getParameter("action");
+			if (action.equals("login")){//ログイン時
+			  String id = request.getParameter("id");
+			  String pw= request.getParameter("pw");
+			  if (pw ==null || pw.length()==0||id ==null||pw.length()==0) {
+				  request.setAttribute("message","もー！ちゃんとやって！未入力だよ！？");
+					gotoPage(request,response,"/errInternal.jsp");
+					return;
+			  }
+			  OrderDAO dao= new OrderDAO();
+			  CustomerBean user=dao.saveUser(id);
+			if (user==null) {
+				  request.setAttribute("message","もー！ちゃんとやって！IDが違うよ！");
+				  
+					gotoPage(request,response,"/errInternal.jsp");
+					return;
+				}
+			  if (pw.equals(user.getPass())){
+			    //セッション管理を行う
+			    HttpSession session = request.getSession();
+			    //ログイン済みの属性を設定する。
+			    session.setAttribute("isLogin","true");
+			    session.setAttribute("userinfo",user);
+			    request.setAttribute("message","ログイン成功");
 				gotoPage(request,response,"/errInternal.jsp");
-		}else
-
-		  if (pw.equals(user.getPass())){
-		    //セッション管理を行う
-		    HttpSession session = request.getSession();
-		    //ログイン済みの属性を設定する。
-		    session.setAttribute("isLogin","true");
-		    session.setAttribute("userinfo",user);
-		    request.setAttribute("message","ログイン成功");
-			gotoPage(request,response,"/errInternal.jsp");
-		    
-		  }else{
-			  request.setAttribute("message","パスワードが違います");
+			    
+			  }else{
+				  request.setAttribute("message","あ、パスワードが違います");
+					gotoPage(request,response,"/errInternal.jsp");
+			  }
+			
+			
+			}else if(action.equals("logout")){//ログアウト時
+			  //すでに作成されているセッション領域を取得する。新しくは作成しない
+			  HttpSession session = request.getSession(false);
+			 if(session !=null){
+			    //セッション領域を無効にする。
+			    session.invalidate();
+			    request.setAttribute("message","ログアウトしました");
 				gotoPage(request,response,"/errInternal.jsp");
-		  }
-
-		}else if(action.equals("logout")){//ログアウト時
-		  //すでに作成されているセッション領域を取得する。新しくは作成しない
-		  HttpSession session = request.getSession(false);
-		  if(session !=null){
-		    //セッション領域を無効にする。
-		    session.invalidate();
-		    request.setAttribute("message","ログアウトしました");
-			gotoPage(request,response,"/errInternal.jsp");
-		  }
-		}
-		
+			  }else {
+				request.setAttribute("message","ログインされていません");
+				gotoPage(request,response,"/errInternal.jsp");
+				  
+			  }
+			}
+			
 
   }catch(DAOException e){
 	e.printStackTrace();
