@@ -22,7 +22,6 @@
 <p style="text-align: center"><img src="//www.jp.seicho-no-ie.org/brha/wp/wp-content/uploads/2015/12/57d18a3ee80a60d1b8f9dcc284fe74ec_s.jpg" width="450" height="300"></p><br>
 <hr>
 
-
 <div style="text-align: center; display:inline-block; width:50%;">
 <p>
 	<form action="/yasai/ShowItemListServlet?action=search" method="post">

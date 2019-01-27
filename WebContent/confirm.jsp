@@ -9,8 +9,11 @@
 <title>注文確認</title>
 </head>
 <body>
+<div style="text-align: center">
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="300"></a></h3>
 
-<jsp:include page="/menu.jsp" /><br>
+<jsp:include page="/menu.jsp" /><br><br>
+<hr>
 <h3>下記の内容で注文を行いますか？</h3>
 <h3>ご注文内容</h3>
 
@@ -52,6 +55,6 @@
 </form>
 
 </c:if>
-
+</div>
 </body>
 </html>

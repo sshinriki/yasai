@@ -5,14 +5,16 @@
 <title>ログイン</title>
 </head>
 <body>
+<div style="text-align: center">
+<h3><a href="/yasai/ShowItemListServlet?action=top"><img src="img/yasai2.jpg" width="300"></a></h3>
 <h1>ログインしてください</h1>
 <form action = "/yasai/LoginServlet" method = "post">
-  ユーザ名：<input type="text" name = "id"><br>
+  メールアドレス：<input type="text" name = "id"><br>
   パスワード：<input type = "password" name = "pw"><br>
   <input type="hidden" name="action" value="login">
   <input type = "submit" value="ログイン">
   </form>
-  	<br><a href ="/yasai/userform.jsp">新規ユーザ登録はこちら</a>
+  	<br><br><br><a href ="/yasai/userform.jsp">新規ユーザ登録はこちら</a>
     <br><a href ="/yasai/index.jsp">トップページへ</a>
-    
+    </div>
 </body>
