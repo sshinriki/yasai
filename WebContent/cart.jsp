@@ -21,7 +21,7 @@
 </c:if>
 
 <c:if test="${not empty cart.items}">
-<table border="1">
+<table border="1" align="center">
 <tr><td>商品番号</td><td>商品名</td><td>単価(税込)</td>
     <td>個数</td><td>小計</td><td>削除</td></tr>
 
